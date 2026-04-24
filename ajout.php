@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+require_once("header");
+if(!$_SESSION['role'] == 'ROLE_ADMIN')
+    header('location:erreur.php');
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-</head>
 
-<body>
+?>
+
     
     <?php
     $login = "groupeg";
@@ -28,7 +25,9 @@
     $requete = "insert into articles(id,titre,contenu) values(null,'$titre','$contenu')";
     //echo $requete."<br>";
     $nb = $dbconnex->exec($requete);
-    if($nb < 1)
+    if($nb < 1)if(!$_SESSION['role'] == 'ROLE_ADMIN')
+    header('location:erreur.php');
+
     { 
         echo "<br>Probleme d'ajout...<br>";
     }
@@ -40,6 +39,6 @@
     
 
     ?>
-</body>
-
-</html>
+    <?php 
+require_once("header.php");
+?>

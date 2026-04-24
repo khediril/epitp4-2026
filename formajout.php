@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+require_once("header.php");
+echo "<br>ROLE : ".$_SESSION['role']."<br>";
+if(!($_SESSION['role'] == 'ROLE_ADMIN'))
+    {
+    header('location:erreur.php');
+    }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+?>
 
-<body>
     <h1>Ajout nouvel article</h1>
     <form action="ajout.php" method="post">
         Titre : <input type="text" name="titre" id=""><br>
@@ -16,6 +16,6 @@ Default text can go here.
 </textarea>
         <input type="submit" value="Sauvgarder">
     </form>
-</body>
-
-</html>
+<?php 
+require_once("header.php");
+?>
